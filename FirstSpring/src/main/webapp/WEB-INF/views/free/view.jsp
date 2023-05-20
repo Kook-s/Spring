@@ -36,6 +36,9 @@
 				</div>
 			</div>
 		</form>
+		<form action="/free/update.do" method="post" id="subMit"> 
+			<input type="hidden" name="boNo" value="${free.boNo }">
+		</form>
 		<hr>
 	</div>
 </body>
@@ -48,7 +51,8 @@ $(()=>{
 		var text=$(this).text()
 		if(text=='삭제'){
 			if(confirm("정말 삭제하시겠습니까?")){
-				location.href="/free/delete.do?boNo=${free.boNo }"
+				/* location.href="/free/delete.do?boNo=${free.boNo }" */
+				$("#subMit").submit();
 			}
 		}
 		if(text=='수정'){

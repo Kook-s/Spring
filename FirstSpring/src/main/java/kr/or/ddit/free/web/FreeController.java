@@ -62,7 +62,7 @@ public class FreeController {
 		return "free/view";
 	}
 	
-	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete.do", method = RequestMethod.POST)
 	public String delete(int boNo, Model model) {
 		String page = "";
 		ServiceResult result= freeService.deleteFree(boNo);
