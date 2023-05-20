@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Main">
+	<select id="selectBoardList" resultType="boardVO">
+		<![CDATA[
+		select b.*
+		from(select a.*, row_number() over (order by a.bono desc) rnum
+				from(
+					select * from board
+					order by bono desc
+				)a
+		)b
+		where rnum<=5
+		]]>
+	</select>
+	<select id="selectNoticeList" resultType="noticeVO">
+		<![CDATA[
+		select b.*
+		from(select a.*, row_number() over (order by a.bono desc) rnum
+				from(
+					select * from notice
+					order by bono desc
+				)a
+		)b
+		where rnum<=5
+		]]>
+	</select>
+	<select id="selectFreeList" resultType="freeVO">
+		<![CDATA[
+		select b.*
+		from(select a.*, row_number() over (order by a.bono desc) rnum
+				from(
+					select * from free
+					order by bono desc
+				)a
+		)b
+		where rnum<=5
+		]]>
+	</select>
+</mapper>
